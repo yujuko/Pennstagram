@@ -1,0 +1,23 @@
+/* Base Elements */
+
+.profPic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.postUploaded {
+    width: 750px;
+	border: 1px solid #ddd;
+  	border-radius: 4px;
+  	padding: 5px;
+  	margin: 20px;
+}
+
+.profPagePic {
+  	width: 400px;
+  	border-radius: 50%;
+  	border: 1px solid #ddd;
+}
+

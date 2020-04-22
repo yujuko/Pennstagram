@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="Pennstagram">
+
+<head>
+    <title>Pennstagram</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="app/css/main.css">
+</head>
+<nav class="navbar navbar-dark bg-dark" ng-controller="NavigationController">
+    <div class="container">
+        <div >
+        <div ng-show = "!loggedIn">
+            <span style="color : white">Pennstagram</span>
+            <input type="text" placeholder="email" ng-model="login.email" id="loginemail">
+            <input type="password" placeholder= "password" ng-model="login.password" id="loginpass">
+            <button ng-click="loginUser()" id="lg-btn">Login</button>
+            <a style="color : white" ui-sref="signUp" id="signup-btn">Sign Up</a>
+        </div>
+        <div ng-show="loggedIn">
+            <a style="color : white" ui-sref="feed" id = "f">Home</a>
+            <span style="color : white">&middot;</span>
+            <a style="color : white" ui-sref="profile" id = "prof" >Profile</a>
+            <span style="color : white">&middot;</span>
+            <a style="color : white" ui-sref="activity" id = "act" >Activity</a>
+            <span style="color : white">&middot;</span>
+            <a style="color : white" ui-sref="follow" id = "foll" >Follow</a>
+            <span style="color : white">&middot;</span>
+            <a ng-click="logOut()" style="color : gainsboro" onclick="location.href = '/';"  id = "l-out"> Logout</a>
+        </div>
+    </div>
+</nav>
+
+<body>
+
+    <div ui-view>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.23/angular-ui-router.js"></script>
+<script src="app/app.js"></script>
+
+<!--Ctrllrs-->
+<script src="app/signup/signup-controller.js"></script>
+<script src="app/navigation/navigation-controller.js"></script>
+<script src="app/profile/edit-profile-controller.js"></script>
+<script src="app/profile/personal-profile-controller.js"></script>
+<script src="app/feed/feed-controller.js"></script>
+<script src="app/follow/follow-controller.js"></script>
+<script src="app/activity/activity-controller.js"></script>
+
+<!-- Libraries -->
+<script src="node_modules/ng-file-upload/dist/ng-file-upload-all.js">
+</script>
+<script src="node_modules/ng-file-upload/dist/ng-file-upload.js">
+</script>
+<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js">
+</script>
+
+</html>

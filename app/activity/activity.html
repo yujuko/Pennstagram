@@ -1,0 +1,20 @@
+<html ng-app="Pennstagram">
+
+<div style="margin-top : 30px" class="col-sm-10 offset-sm-1">
+    
+        <h3>Activity Feeds</h3>
+        <div ng-repeat="u in act">
+            <p style = " color : #CC3300" ng-if = "u.caption == 'liked'">
+                {{u.username}} {{u.caption}}  {{u.posterUsername }}'s post at {{u.date}}</p>   
+            <p style = " color :#094276" ng-if = "u.caption == 'started following'">
+                {{u.username}} {{u.caption}}  {{u.posterUsername }} at {{u.date}}</p>
+            <p style = " color :#006600" ng-if = "u.caption == 'posted'">
+                {{u.username}} {{u.caption}} a new post "{{u.posterUsername }}" at {{u.date}}</p>
+            <p style = " color : #CC3300" ng-if = "u.caption == 'commented'">
+                {{u.username}} commented on {{u.posterUsername }}'s post "{{u.description}}" at {{u.date}}</p>                       
+           
+       </div>
+
+    </div>
+
+</html>

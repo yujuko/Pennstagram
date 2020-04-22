@@ -1,0 +1,16 @@
+<div class = "col-sm-6 offset-sm-1" style = "margin-top: 50px">
+<ul>
+	<li ng-repeat = "poster in users" 
+	ng-show = "user.data._id !== poster._id">
+		User: {{poster.username}} -  Email: {{poster.email}}
+		<button  style = " background-color: #42adb7" ng-click = "follow(user.data._id, poster._id) ; followActivity(user.data._id, user.data.username, poster.username)"
+		ng-hide = "checkIsFollowing(poster._id)"
+		onClick="window.location.reload();"
+		>Follow</button>
+		<button style = "background-color :#FF6633" ng-click = "unfollow(user.data._id, poster._id)"
+		ng-show = "checkIsFollowing(poster._id)"
+		onClick="window.location.reload();">Unfollow</button>
+		<br>
+	</li>
+</ul>
+</div>

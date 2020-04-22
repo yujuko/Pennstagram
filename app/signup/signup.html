@@ -1,0 +1,20 @@
+<div class = "row">
+	<div class = "col-sm-6 offset-sm-1" style = "margin-top: 50px">
+		<h3>Join now</h3>
+		<div class = "row">
+
+			<strong>Username: </strong>
+			<input type="text" ng-model = "newUser.username" class = "form-control" id="newUserUsername">
+
+			<strong>Email Address: </strong>
+			<input type="text" ng-model = "newUser.email" class = "form-control" id="newUserEmail">
+		</div>
+		<div class = "row">
+			<strong>Password : </strong>
+			<input type="password" ng-model = "newUser.password" class = "form-control" id="newUserPass">
+		</div>
+		<br>
+		<button ng-click = "createUser()" id="createUser-btn">Sign Up</button>
+
+	</div>
+</div>

@@ -1,0 +1,87 @@
+<html ng-app="Pennstagram">
+
+
+<!-- <div ng-show="loggedIn"> -->
+<div style="margin-top : 30px" class="col-sm-10 offset-sm-1">
+    <div class="row">
+        <button ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" id="f-upload">
+            First, click here to select a picture.
+        </button>
+    </div>
+    <br>
+        <textarea ng-model="newPostUpload" class="form-control" placeholder="Then, type your caption here ..." id="createCaption">
+        </textarea>
+        <button style = "color :#696969" class="btn" ng-hide = "tagging" ng-click = "tag()" id="tag-btn"> Tag People</button>
+        <div ng-show = "tagging">
+            <form>
+            <div >Select people you want to tag</div>
+            <div ng-repeat = 'f in users'>
+              <label class="container">{{f.username}}
+               <input type="checkbox" id="{{f}}" value="{{f}}" ng-model="f.selected">
+               <span class="checkmark"></span>
+            </div>
+        </form>
+        </div>
+
+        <button style = " margin-top : 20px" ng-click = "postPic() ; postActivity(user.data._id, user.data.username) ;" id="publish">Post</button>
+
+    </div>
+    <div class="row" style="margin-left : 30px">
+        <table>
+            <tr ng-repeat="u in uploads">
+
+                <td>
+                {{u.likes.length}} likes
+
+                    <button ng-hide = "checkIsLiked(u._id)" onClick="window.location.reload(); "  ng-click = "likePost(user.data._id,u._id) ; likeActivity(user.data._id, user.data.username, u.user)" > Like </button>
+                    <button ng-show = "checkIsLiked(u._id)" onClick="window.location.reload();"
+                    ng-click = "unLikePost(user.data._id,u._id)" > UnLike </button>
+                    <button ng-if = "u.userId === user.data._id" style = " background-color: #FF6633" ng-click = "deletePost(u._id)" > Delete </button>
+
+
+                </td>
+                <td>
+
+                    <image ng-src="{{u.postUpload}}" class="postUploaded"><br>
+                    <span  ng-hide = "editingCaption" style= "font-size: 20px">{{u.caption}}
+                    <span style = "color: #42adb7" ng-repeat = "t in u.tagged">@{{t.username}} </span></span >
+                    <button  ng-hide = "editingPicture" style = "color :#696969" class="btn" ng-if = "u.userId === user.data._id" ng-click = "editPic(u._id)" > Edit Picture </button>
+                    <div ng-show = "editingPicture" class="row">
+                        <button ngf-select ng-model="updateFile" name="updateFile" ngf-pattern="'image/*'" accept="image/*">
+                        Click here to upload a new picture
+                        </button>
+                        <button style = "color :#42adb7" class="btn" type="submit" ng-click ="updateUpload (updateFile)">Save pic</button>
+                    </div>
+
+                        <button  style = "color :#696969" class="btn" ng-if = "u.userId === user.data._id" ng-click = "editCap(u._id)" > Edit Caption </button>
+
+                    <form ng-show = "editingCaption" ng-submit="editingCaption = false">
+                        <label> Caption:</label>
+                        <input type="text" ng-model="editCaption" placeholder="{{u.caption}}" ng-required/>
+                        <button style = "color :#42adb7" class="btn" type="submit" ng-click ="updatePost(editCaption,u._id)">Save caption</button>
+                    </form>
+                    <div ng-repeat="c in u.comments">
+                        {{c.username}} commented : {{c.comment}}
+                        <button ng-if = "c.userId === user.data._id" style = " background-color: #FF6633" ng-click = "deleteComment(u._id,c._id)" onClick="window.location.reload();"> Delete </button>
+                    </div>
+                    <textarea ng-model="newComment" class="form-control" placeholder="Comment here..."></textarea> <button ng-click = "commentPost(newComment, user.data._id, user.data.username, u._id) ; commentActivity(newComment, user.data._id, user.data.username, u.user)" onClick="window.location.reload();">comment</button>
+                </td>
+
+                <br>
+                <td>
+
+                    <strong>{{u.user}}</strong><br>
+                    <image ng-src="{{u.profilePic}}" class="profPic"><br> {{u.date | date: 'MM/dd/yyyy hh:mm'}}<br>
+
+
+                </td>
+
+
+            </tr>
+        </table>
+
+    </div>
+</div>
+<!-- </div> -->
+
+</html>

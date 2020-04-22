@@ -1,0 +1,22 @@
+<div style = "margin-top: 50px" class="col-sm-8 offset-sm-2">
+    <div class="row">
+        <h3>Update Profile</h3>
+    </div>
+    <br>
+    <div class="row">
+        <button ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*">
+            Click here to upload a profile picture
+        </button>
+    </div>
+    <br>
+    <div class="row">
+        <input class="form-control" ng-model="user.username" placeholder="Enter your display name here" id = "enterUser">
+        <button ng-click="updateUsername()" id ="enterUser-btn">Save Username</button>
+    </div>
+    <br>
+    <div class="row">
+        <textarea class="form-control" ng-model="user.bio" placeholder="and a short bio here." id = "enterBio"></textarea>
+        <button ng-click="updateBio()" id ="enterBio-btn">Save Bio</button>
+    </div>
+</div>
+</div>

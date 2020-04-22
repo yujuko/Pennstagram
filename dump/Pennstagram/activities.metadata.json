@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"Pennstagram.activities"}],"uuid":"d95b3421d5df4d7d80eb407983deaa33"}
